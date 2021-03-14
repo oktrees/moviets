@@ -1,4 +1,10 @@
 
-export { default as HeaderContainer } from "containers/header";
+export { default as HeaderContainer } from "containers/HeaderContainer";
 
-export { default as HomeContainer } from "containers/home";
+export { default as HomeContainer } from "containers/HomeContainer";
+
+export { default as MovieContainer } from "containers/MovieContainer";
+
+export { default as TelevisionContainer } from "containers/TelevisionContainer";
+
+export { default as SearchContainer } from "containers/SearchContainer";

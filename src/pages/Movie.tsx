@@ -1,8 +1,13 @@
 import React from "react";
+import { MainTemplate, Footer } from "components";
+import { HeaderContainer, MovieContainer } from "containers";
+
 
 const Movie: React.FC  = () => {
   return (
-    <h1>Movie</h1>
+    <MainTemplate header={<HeaderContainer />} footer={<Footer />}>
+      <MovieContainer />
+    </MainTemplate>
   )
 }
 

@@ -1,13 +1,13 @@
 import React from "react";
 import { MainTemplate, Footer } from "components";
-import { HeaderContainer, SearchContainer } from "containers";
+import { HeaderContainer, TelevisionContainer } from "containers";
 
-const Search: React.FC  = () => {
+const Television: React.FC = () => {
   return (
     <MainTemplate header={<HeaderContainer />} footer={<Footer />}>
-      <SearchContainer />
+      <TelevisionContainer />
     </MainTemplate>
   )
 }
 
-export default Search;
+export default Television;
