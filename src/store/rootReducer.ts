@@ -10,4 +10,4 @@ export const rootReducer = combineReducers({
   search: searchnReducer
 });
 
-export type rootState = ReturnType<typeof rootReducer>;
+export type RootState = ReturnType<typeof rootReducer>;

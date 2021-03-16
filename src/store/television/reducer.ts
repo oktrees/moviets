@@ -22,6 +22,21 @@ const initialState = {
     error: null,
     data: null
   },
+  detailVideos: {
+    loading: false,
+    error: null,
+    data: null
+  },
+  detailCredits: {
+    loading: false,
+    error: null,
+    data: null
+  },
+  detailSimilars: {
+    loading: false,
+    error: null,
+    data: null
+  },
 };
 
 const televisionReducer = (state = initialState, action: any) => {
@@ -117,6 +132,78 @@ const televisionReducer = (state = initialState, action: any) => {
       return { 
         ...state, 
         detail: {
+          loading: false,
+          error: true,
+          data: action.error
+        } 
+      };
+    case CONST.GET_DETAIL_VIDEOS[REQUEST]:
+      return { 
+        ...state, 
+        detailVideos: {
+          loading: true,
+        } 
+      };
+    case CONST.GET_DETAIL_VIDEOS[SUCCESS]:
+      return { 
+        ...state, 
+        detailVideos: {
+          loading: false,
+          data: action.payload
+        } 
+      };
+    case CONST.GET_DETAIL_VIDEOS[FAILURE]: 
+      return { 
+        ...state, 
+        detailVideos: {
+          loading: false,
+          error: true,
+          data: action.error
+        } 
+      };
+    case CONST.GET_DETAIL_CREDITS[REQUEST]:
+      return { 
+        ...state, 
+        detailCredits: {
+          loading: true,
+        } 
+      };
+    case CONST.GET_DETAIL_CREDITS[SUCCESS]:
+      return { 
+        ...state, 
+        detailCredits: {
+          loading: false,
+          data: action.payload
+        } 
+      };
+    case CONST.GET_DETAIL_CREDITS[FAILURE]: 
+      return { 
+        ...state, 
+        detailCredits: {
+          loading: false,
+          error: true,
+          data: action.error
+        } 
+      };
+    case CONST.GET_DETAIL_SIMILARS[REQUEST]:
+      return { 
+        ...state, 
+        detailSimilars: {
+          loading: true,
+        } 
+      };
+    case CONST.GET_DETAIL_SIMILARS[SUCCESS]:
+      return { 
+        ...state, 
+        detailSimilars: {
+          loading: false,
+          data: action.payload
+        } 
+      };
+    case CONST.GET_DETAIL_SIMILARS[FAILURE]: 
+      return { 
+        ...state, 
+        detailSimilars: {
           loading: false,
           error: true,
           data: action.error

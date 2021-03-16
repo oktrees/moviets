@@ -21,12 +21,16 @@ export const getTopRatedTv = () =>
 export const getTvDetail = (id: string) => 
   client.get(`tv/${id}`);
 
+//관련영상
+export const getTvVideos = (id: string) => 
+  client.get(`tv/${id}/videos`);
+
 //비슷한 방송
-export const getTvCredits = () => 
-  client.get(`tv/{id}/credits`);
+export const getTvCredits = (id: string) => 
+  client.get(`tv/${id}/credits`);
 
 //방송 크레딧
-export const getSimilarTv = () => 
-  client.get(`tv/{id}/similar`);
+export const getTvSimilar = (id: string) => 
+  client.get(`tv/${id}/similar`);
 
 

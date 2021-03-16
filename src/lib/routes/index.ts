@@ -1,4 +1,4 @@
-import { Home, Movie, Television, Search } from "pages";
+import { Home, Movie, Television, Search, Detail } from "pages";
 
 export const routes = [
   {
@@ -12,8 +12,18 @@ export const routes = [
     exact: true
   },
   {
+    path: "/movie/:id",
+    page: Detail,
+    exact: true
+  },
+  {
     path: "/tv",
     page: Television,
+    exact: true
+  },
+  {
+    path: "/tv/:id",
+    page: Detail,
     exact: true
   },
   {

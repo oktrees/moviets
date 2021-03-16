@@ -13,7 +13,7 @@ const configureStore = () => {
 
   const enhancers = composeEnhancers(applyMiddleware(
     sagaMiddleware, 
-    logger
+    // logger
   ));
 
   const store = createStore(rootReducer, enhancers);

@@ -6,6 +6,9 @@ export const CONST = {
   GET_TOP_RATED_TELEVISIONS: createRequestTypes("tv/GET_TOP_RATED_TELEVISIONS"),
   GET_POPULAR_TELEVISIONS: createRequestTypes("tv/GET_POPULAR_TELEVISIONS"),
   GET_DETAIL: createRequestTypes("tv/GET_DETAIL"),
+  GET_DETAIL_VIDEOS: createRequestTypes("tv/GET_DETAIL_VIDEOS"),
+  GET_DETAIL_CREDITS: createRequestTypes("tv/GET_DETAIL_CREDITS"),
+  GET_DETAIL_SIMILARS: createRequestTypes("tv/GET_DETAIL_SIMILARS"),
 }
  
 const getOnAirTelevisionsRequest = () => ({
@@ -68,6 +71,54 @@ const getDetailFailure = (error: any) => ({
   error
 })
 
+const getDetailVideosRequest = (id: string) => ({
+  type: CONST.GET_DETAIL_VIDEOS[REQUEST],
+  id,
+})
+
+const getDetailVideosSuccess = (payload: any) => ({ 
+  type: CONST.GET_DETAIL_VIDEOS[SUCCESS],
+  payload
+})
+
+const getDetailVideosFailure = (error: any) => ({ 
+  type: CONST.GET_DETAIL_VIDEOS[FAILURE],
+  error
+})
+
+
+const getDetailCreditsRequest = (id: string) => ({
+  type: CONST.GET_DETAIL_CREDITS[REQUEST],
+  id,
+})
+
+const getDetailCreditsSuccess = (payload: any) => ({ 
+  type: CONST.GET_DETAIL_CREDITS[SUCCESS],
+  payload
+})
+
+const getDetailCreditsFailure = (error: any) => ({ 
+  type: CONST.GET_DETAIL_CREDITS[FAILURE],
+  error
+})
+
+
+const getDetailSimilarsRequest = (id: string) => ({
+  type: CONST.GET_DETAIL_SIMILARS[REQUEST],
+  id,
+})
+
+const getDetailSimilarsSuccess = (payload: any) => ({ 
+  type: CONST.GET_DETAIL_SIMILARS[SUCCESS],
+  payload
+})
+
+const getDetailSimilarsFailure = (error: any) => ({ 
+  type: CONST.GET_DETAIL_SIMILARS[FAILURE],
+  error
+})
+
+
 export const Actions = {
   getOnAirTelevisionsRequest,
   getOnAirTelevisionsSuccess,
@@ -80,5 +131,14 @@ export const Actions = {
   getPopualarTelevisionsFailure,
   getDetailRequest,
   getDetailSuccess,
-  getDetailFailure
+  getDetailFailure,
+  getDetailVideosRequest,
+  getDetailVideosSuccess,
+  getDetailVideosFailure,
+  getDetailCreditsRequest,
+  getDetailCreditsSuccess,
+  getDetailCreditsFailure,
+  getDetailSimilarsRequest,
+  getDetailSimilarsSuccess,
+  getDetailSimilarsFailure
 }

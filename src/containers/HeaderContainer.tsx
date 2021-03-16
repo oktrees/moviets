@@ -1,17 +1,11 @@
 import React from 'react';
-import { Link } from "react-router-dom";
 
-const Header: React.FC = () => {
+import { Header } from "components";
+
+const HeaderContainer: React.FC = () => {
   return (
-    <div className="App-header">
-      header
-      <Link to="/">home</Link>&nbsp;&nbsp;
-      <Link to="/movie">movie</Link>&nbsp;&nbsp;
-      <Link to="/tv">tv</Link>&nbsp;&nbsp;
-      <Link to="/search">search</Link>&nbsp;&nbsp;
-
-    </div>
+    <Header/>
   );
 }
 
-export default Header;
+export default HeaderContainer;

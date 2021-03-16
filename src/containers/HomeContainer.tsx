@@ -2,16 +2,15 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 
 import { movieActions, televisionActions } from 'store/actions';
+import { Home } from "components";
+import { RootState } from "store/rootReducer";
 
 interface Props {
-  // contacts: any,
-  // getContact: any,
-  // minus: any,
-}
+} 
 
 const HomeContainer: React.FC<Props> = (props) => {
-  const { trendMovies } = useSelector((state: any) => state.movies);
-  const { onAirTelevisions } = useSelector((state: any) => state.televisions);
+  const { trendMovies } = useSelector((state: RootState) => state.movies);
+  const { onAirTelevisions } = useSelector((state: RootState) => state.televisions);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -20,15 +19,10 @@ const HomeContainer: React.FC<Props> = (props) => {
   },[dispatch])
 
   return (
-    <div>
-      <h1>Home</h1>
-
-      <h2>상영중인 영화</h2>
-      {trendMovies.data?.results[0] && trendMovies.data.results.map((result:any,i:any) => (<div key={i}>{result.title}</div>))}
-
-      <h2>방영중인 프로그램</h2>
-      {onAirTelevisions.data?.results[0] && onAirTelevisions.data.results.map((result:any,i:any) => (<div key={i}>{result.name}</div>))}
-    </div>
+    <Home 
+      trendMovies={trendMovies}
+      onAirTelevisions={onAirTelevisions}
+    />
   );
 }
 

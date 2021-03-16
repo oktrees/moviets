@@ -4,6 +4,10 @@ import {
   getTodayMovies, 
   getTopRatedMovies, 
   getNowPlayingMovies,
+  getMovieDetail,
+  getMovieVideos,
+  getMovieCredits,
+  getMovieSimilar,
   // GithubProfile 
 } from 'lib/api/movies';
 
@@ -36,8 +40,48 @@ function* getNowPlayingMoviesSaga(action: any) {
   }
 }
 
+function* getDetailSaga(action: any) {
+  try {
+    const { data } = yield call(getMovieDetail, action.id);
+    yield put(Actions.getDetailSuccess(data));
+  } catch (error) {
+    yield put(Actions.getDetailFailure(error));
+  }
+}
+
+function* getDetailVideosSaga(action: any) {
+  try {
+    const { data } = yield call(getMovieVideos, action.id);
+    yield put(Actions.getDetailVideosSuccess(data));
+  } catch (error) {
+    yield put(Actions.getDetailVideosFailure(error));
+  }
+}
+
+function* getDetailCreditsSaga(action: any) {
+  try {
+    const { data } = yield call(getMovieCredits, action.id);
+    yield put(Actions.getDetailCreditsSuccess(data));
+  } catch (error) {
+    yield put(Actions.getDetailCreditsFailure(error));
+  }
+}
+
+function* getDetailSimilarSaga(action: any) {
+  try {
+    const { data } = yield call(getMovieSimilar, action.id);
+    yield put(Actions.getDetailSimilarsSuccess(data));
+  } catch (error) {
+    yield put(Actions.getDetailSimilarsFailure(error));
+  }
+}
+
 export function* movieSagas() {
   yield takeEvery(CONST.GET_TREND_MOVIES[REQUEST], getTrendMoviesSaga);
   yield takeEvery(CONST.GET_TOP_RATED_MOVIES[REQUEST], getTopRatedMoviesSaga);
   yield takeEvery(CONST.GET_NOW_PLAYING_MOVIES[REQUEST], getNowPlayingMoviesSaga);
+  yield takeEvery(CONST.GET_DETAIL[REQUEST], getDetailSaga);
+  yield takeEvery(CONST.GET_DETAIL_VIDEOS[REQUEST], getDetailVideosSaga);
+  yield takeEvery(CONST.GET_DETAIL_CREDITS[REQUEST], getDetailCreditsSaga);
+  yield takeEvery(CONST.GET_DETAIL_SIMILARS[REQUEST], getDetailSimilarSaga);
 }

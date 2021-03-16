@@ -24,18 +24,21 @@ export const getNowPlayingMovies = () =>
   client.get(`movie/now_playing`);
 
 
-
 //영화 상세정보
-export const getMovieDetail = () => 
-  client.get(`movie/{id}`);
+export const getMovieDetail = (id: string) => 
+  client.get(`movie/${id}`);
+
+//관련영상
+export const getMovieVideos = (id: string) => 
+  client.get(`movie/${id}/videos`);
 
 //비슷한 영화
-export const getMovieCredits = () => 
-  client.get(`movie/{}/credits`);
+export const getMovieCredits = (id: string) => 
+  client.get(`movie/${id}/credits`);
 
 //영화 크레딧
-export const getSimilarMovie = () => 
-  client.get(`movie/{}/similar`);
+export const getMovieSimilar = (id: string) => 
+  client.get(`movie/${id}/similar`);
 
 
 

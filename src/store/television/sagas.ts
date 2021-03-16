@@ -5,6 +5,9 @@ import {
   getPopularTv,
   getTopRatedTv,
   getTvDetail,
+  getTvVideos,
+  getTvCredits,
+  getTvSimilar,
 } from 'lib/api/televisions';
 
 import { CONST, Actions } from './actions';
@@ -37,7 +40,6 @@ function* getPopualarTelevisionsSaga(action: any) {
 }
 
 function* getDetailSaga(action: any) {
-  console.log(action);
   try {
     const { data } = yield call(getTvDetail, action.id);
     yield put(Actions.getDetailSuccess(data));
@@ -45,11 +47,39 @@ function* getDetailSaga(action: any) {
     yield put(Actions.getDetailFailure(error));
   }
 }
+function* getDetailVideosSaga(action: any) {
+  try {
+    const { data } = yield call(getTvVideos, action.id);
+    yield put(Actions.getDetailVideosSuccess(data));
+  } catch (error) {
+    yield put(Actions.getDetailVideosFailure(error));
+  }
+}
 
+function* getDetailCreditsSaga(action: any) {
+  try {
+    const { data } = yield call(getTvCredits, action.id);
+    yield put(Actions.getDetailCreditsSuccess(data));
+  } catch (error) {
+    yield put(Actions.getDetailCreditsFailure(error));
+  }
+}
+
+function* getDetailSimilarSaga(action: any) {
+  try {
+    const { data } = yield call(getTvSimilar, action.id);
+    yield put(Actions.getDetailSimilarsSuccess(data));
+  } catch (error) {
+    yield put(Actions.getDetailSimilarsFailure(error));
+  }
+}
 
 export function* televisionSagas() {
   yield takeEvery(CONST.GET_ON_AIR_TELEVISIONS[REQUEST], getOnAirTelevisionsSaga);
   yield takeEvery(CONST.GET_TOP_RATED_TELEVISIONS[REQUEST], getTopRatedTelevisionsSaga);
   yield takeEvery(CONST.GET_POPULAR_TELEVISIONS[REQUEST], getPopualarTelevisionsSaga);
   yield takeEvery(CONST.GET_DETAIL[REQUEST], getDetailSaga);
+  yield takeEvery(CONST.GET_DETAIL_VIDEOS[REQUEST], getDetailVideosSaga);
+  yield takeEvery(CONST.GET_DETAIL_CREDITS[REQUEST], getDetailCreditsSaga);
+  yield takeEvery(CONST.GET_DETAIL_SIMILARS[REQUEST], getDetailSimilarSaga);
 }
