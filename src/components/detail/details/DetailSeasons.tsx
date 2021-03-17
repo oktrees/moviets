@@ -55,6 +55,8 @@ const Container = styled.div`
     font-size: 24px;
     margin-bottom: 20px;
     font-weight: 600;
+    border-left: 3px solid rgba(255,0,0,0.7);
+    padding-left:10px;
   }
   .seasonName {
     margin-top: 10px;

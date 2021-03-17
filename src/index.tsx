@@ -8,7 +8,7 @@ import GlobalStyles from 'styles/GlobalStyles'
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <GlobalStyles/>
       <App />
     </BrowserRouter>

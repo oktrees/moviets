@@ -87,10 +87,7 @@ const Containter = styled.div`
   @media screen and (max-width: 768px) {
     flex-direction: column;
     align-items: center;
-  }  
-  @media screen and (max-width: 480px) {
-
-  }  
+  } 
 `
 const BackImg = styled.div<activeType>`
   position: absolute;
@@ -125,6 +122,7 @@ const Info = styled.div`
     h1 {
       font-size: 32px;  
       margin-left: 5vw;
+      margin-top: 1vh;
     }
     .originName {
       font-size: 14px;

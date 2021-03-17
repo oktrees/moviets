@@ -10,11 +10,10 @@ interface Props {
 
 const Image: React.FC<Props> = ({ src, alt, width, height }) => {
   const onErrorImg = (e: any) => {
-    e.target.src = "/images/noImage.png"
+    e.target.src = `${process.env.PUBLIC_URL}/images/noImage.png`
     e.target.width= 100
     e.target.height= 130
     e.target.align= "center"
-    console.log(src);
   }
   return (
     <Container width={width} height={height} src={src}>

@@ -12,13 +12,13 @@ class Client {
 
   constructor() {
     this.axios = axios.create({
-      baseURL: process.env.REACT_APP_API_URL,
+      baseURL: "https://api.themoviedb.org/3/",
       timeout: 5000,
       headers: {
         "Content-Type": "application/json",
       },
       params: {
-        api_key: process.env.REACT_APP_API_KEY,
+        api_key: "c470e0476d281404a5ee781d4da74864",
         language: "ko-KR",
       },
     });
