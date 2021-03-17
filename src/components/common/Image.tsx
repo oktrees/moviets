@@ -13,7 +13,7 @@ const Image: React.FC<Props> = ({ src, alt, width, height }) => {
     e.target.src = `${process.env.PUBLIC_URL}/images/noImage.png`
     e.target.width= 100
     e.target.height= 130
-    e.target.align= "center"
+    e.target.align= "center" 
   }
   return (
     <Container width={width} height={height} src={src}>
@@ -37,6 +37,8 @@ const Container = styled.div<ContainerType>`
   width: ${(props) => props.width + 'px'};
   height: ${(props) => props.height + 'px'};
   display: flex;
+  border: 2px solid #444;
+  border-radius: 5px;
   justify-content: center;
   align-items: center;
   img {

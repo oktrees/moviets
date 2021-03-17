@@ -32,6 +32,8 @@ const Containter = styled.div`
   }
   @media screen and (max-width: 480px) {
     padding-left: 0px;
+    margin-left: 5vw;
+    width: 95vw;
   }
 `
 const Logo = styled(Link)`

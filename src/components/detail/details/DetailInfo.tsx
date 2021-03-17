@@ -122,7 +122,7 @@ const Info = styled.div`
     h1 {
       font-size: 32px;  
       margin-left: 5vw;
-      margin-top: 1vh;
+      margin-top: 2vh;
     }
     .originName {
       font-size: 14px;
@@ -134,7 +134,7 @@ const Info = styled.div`
 const InfoBox = styled.div`
   width: 100%;
   height: 100%;
-  min-height: 450px;
+  min-height: 400px;
   margin-top: 20px;
   border-radius: 10px;
   padding: 30px;

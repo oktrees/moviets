@@ -36,6 +36,9 @@ const Container = styled.form`
   input::placeholder {
     color: #eee;
   }
+  @media screen and (max-width: 480px) {
+    margin-left: 5vw;
+  }  
 `
 
 export default Input;
