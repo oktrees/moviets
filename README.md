@@ -22,6 +22,6 @@
 * React
 * TypeScript
 * Redux, Redux-Saga
-* styled-component
+* Styled-Component
 
 
