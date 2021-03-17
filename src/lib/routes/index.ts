@@ -29,6 +29,6 @@ export const routes = [
   {
     path: "/search",
     page: Search,
-    exact: true
+    exact: false
   }
 ];

@@ -1,7 +1,7 @@
 import { Actions } from './actions';
 // import { ActionType } from 'typesafe-actions';
 
-import { GithubProfile } from 'lib/api/movies';
+import { Televisions } from "lib/api/types";
 
 export type GithubAction = 
 | ReturnType<typeof Actions.getOnAirTelevisionsRequest>
@@ -10,10 +10,9 @@ export type GithubAction =
 
 // export type GithubAction = ActionType<typeof actions>;
 
-export type GithubState = {
-  userProfile: {
-    loading: boolean;
-    error: Error | null;
-    data: GithubProfile | null;
-  };
+
+export type TelevisionType = {
+  loading: boolean;
+  error: Error | null;
+  data: null | Televisions ;  
 };

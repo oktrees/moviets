@@ -14,6 +14,7 @@ const Image: React.FC<Props> = ({ src, alt, width, height }) => {
     e.target.width= 100
     e.target.height= 130
     e.target.align= "center"
+    console.log(src);
   }
   return (
     <Container width={width} height={height} src={src}>

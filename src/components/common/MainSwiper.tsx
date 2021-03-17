@@ -4,36 +4,34 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Navigation } from "swiper";
 import 'swiper/swiper-bundle.css';
 
-import { Image, ImageBack } from 'components/common';
+import { ImageBack } from 'components/common';
 
 SwiperCore.use([Navigation]);
 
 interface Props {
-  trendMovies: any,
+  list: any,
   keyword: any,
 }
 
 const MainSwiper: React.FC<Props> = ({
-  trendMovies,
+  list,
   keyword
 }) => ( 
   <Container>
-    {console.log(trendMovies.data)}
     <Swiper
     navigation
-    spaceBetween={30}
     slidesPerView={1}
     >         
-      {trendMovies?.data?.results && trendMovies?.data?.results.map((result: any, i: number) => (          
+      {list?.data?.results && list?.data?.results.map((result: any, i: number) => (          
         <SwiperSlide key={i}>
           <ImageBack 
             src={result.backdrop_path} 
-            alt="posterImg" 
-            width="1000" 
-            height="800"              
+            id={result.id}
+            title={result.title}
+            date={result.release_date}
+            voteAverage={result.vote_average}
+            overview={result.overview}
           />
-          <div className="seasonName">{result.name}</div>
-          <div className="seasonDate">{result.air_date}</div>
         </SwiperSlide>
       ))}
     </Swiper>
@@ -41,8 +39,8 @@ const MainSwiper: React.FC<Props> = ({
 )
 
 const Container = styled.div`
-  width: auto;
-  color: white;
- 
+  width: 100%;
+  height: calc(100vh - 70px);
+  color: white; 
 `
 export default MainSwiper;

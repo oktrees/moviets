@@ -22,8 +22,18 @@ const DetailSimilars: React.FC<Props> = ({
     <h2>{detailSimilars?.data?.results[0] && "관련 영화 추천"}</h2>
     <Swiper
       navigation
-      spaceBetween={30}
-      slidesPerView={4}
+      spaceBetween={50}
+      breakpoints={{
+        480: {
+          width: 480,
+          slidesPerView: 1,
+          centeredSlides: true,
+        },
+        481: {
+          width: 481,
+          slidesPerView: "auto",
+        },
+      }}
     >
       {detailSimilars.data.results.map((result: any, i: number) => (
         <SwiperSlide key={i}>
@@ -50,9 +60,27 @@ const Container = styled.div`
     font-size: 24px;
     margin-bottom: 20px;
     font-weight: 600;
+    border-left: 3px solid rgba(255,0,0,0.7);
+    padding-left:10px;
   }
   .titleName {
     margin-top: 10px;
+  }
+  .swiper-slide {
+    width: 200px;
+  }
+  @media screen and (max-width: 480px) {
+    h2 { 
+      margin-left: 5vw;
+    }   
+    .swiper-container {
+    }
+    .swiper-slide {
+      margin-right: 0px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    } 
   }
 `
 

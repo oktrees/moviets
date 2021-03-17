@@ -28,6 +28,7 @@ const DetailContainer: React.FC<Props> = ({ id, keyword}) => {
       dispatch(televisionActions.getDetailCreditsRequest(id));
       dispatch(televisionActions.getDetailSimilarsRequest(id));
     }
+
   },[dispatch, id, keyword])
 
   return (

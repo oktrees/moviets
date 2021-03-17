@@ -13,3 +13,5 @@ export { default as Search } from "components/search";
 export { default as Detail } from "components/detail";
 
 export { default as Header } from "components/header";
+
+export { default as Slider } from "components/slider";

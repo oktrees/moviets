@@ -35,7 +35,12 @@ const DetailInfo: React.FC<Props> = ({
             <span>              
               {isMovie ? "개봉" : "방영"}
             </span>
-              {isMovie ? detail.data.release_date : detail.data.last_air_date}
+              {isMovie ? detail.data.release_date : 
+                (detail?.data?.next_episode_to_air?.air_date ? 
+                  detail.data.next_episode_to_air.air_date :
+                  detail.data.last_air_date
+                )
+              }
           </li>
           <li>
             <span>
@@ -43,7 +48,11 @@ const DetailInfo: React.FC<Props> = ({
             </span> 
             {isMovie ? 
               detail.data.runtime+"분" : 
-              detail.data.number_of_seasons + " " +detail.data.last_episode_to_air.episode_number + "화"}
+              detail.data.number_of_seasons + " " + 
+              (detail.data?.next_episode_to_air?.episode_number ? 
+                detail.data?.next_episode_to_air?.episode_number + "화" :
+                detail.data?.last_episode_to_air?.episode_number + "화" 
+              )}
           </li>
           <li>
             <span>평점</span> 
@@ -75,6 +84,13 @@ const Containter = styled.div`
   color: white;
   display: flex;
   gap: 70px; 
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+  }  
+  @media screen and (max-width: 480px) {
+
+  }  
 `
 const BackImg = styled.div<activeType>`
   position: absolute;
@@ -97,7 +113,7 @@ const Info = styled.div`
   height: 100%;
   grid-area: info;
   h1 {
-    font-size: 48px;    
+    font-size: 48px;  
   }
   .originName {
     margin-top: 13px;
@@ -105,12 +121,22 @@ const Info = styled.div`
     font-size: 16px;
     color: #ccc;
   }
+  @media screen and (max-width: 480px) {
+    h1 {
+      font-size: 32px;  
+      margin-left: 5vw;
+    }
+    .originName {
+      font-size: 14px;
+      margin-left: 5vw;
+    }
+  }  
 
 `
 const InfoBox = styled.div`
-  width: 95%;
+  width: 100%;
   height: 100%;
-  min-height: 500px;
+  min-height: 450px;
   margin-top: 20px;
   border-radius: 10px;
   padding: 30px;
@@ -129,6 +155,12 @@ const InfoBox = styled.div`
         margin-right: 10px;
       }
     }
+  }
+
+  @media screen and (max-width: 480px) {
+    font-size: 14px;
+    width: 90vw;
+    margin-left: 5vw;
   }
 `
 

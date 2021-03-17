@@ -6,9 +6,6 @@ import { Television } from "components";
 import { RootState } from "store/rootReducer";
 
 interface Props {
-  // contacts: any,
-  // getContact: any,
-  // minus: any,
 }
 
 const TelevisionContainer: React.FC<Props> = (props) => {

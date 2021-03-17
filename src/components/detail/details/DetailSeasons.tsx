@@ -19,8 +19,18 @@ const DetailSeasons: React.FC<Props> = ({
     <h2>{detail?.data?.seasons[1] && "시즌"}</h2>    
     <Swiper
     navigation
-    spaceBetween={30}
-    slidesPerView={4}
+    spaceBetween={50}
+      breakpoints={{
+        480: {
+          width: 480,
+          slidesPerView: 1,
+          centeredSlides: true,
+        },
+        481: {
+          width: 481,
+          slidesPerView: "auto",
+        },
+      }}
     >
       {detail?.data?.seasons[1] && detail?.data?.seasons?.map((result: any, i: number) => (
         <SwiperSlide key={i}>
@@ -53,6 +63,22 @@ const Container = styled.div`
     margin-top: 5px;
     font-size: 14px;
     color: #ccc;
+  }
+  .swiper-slide {
+    width: 200px;
+  }
+  @media screen and (max-width: 480px) {
+    h2 { 
+      margin-left: 5vw;
+    }   
+    .swiper-container {
+    }
+    .swiper-slide {
+      margin-right: 0px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    } 
   }
 `
 

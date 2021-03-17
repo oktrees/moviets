@@ -5,3 +5,5 @@ export { default as Image } from "components/common/Image";
 export { default as MainSwiper } from "components/common/MainSwiper";
 
 export { default as ImageBack } from "components/common/ImageBack";
+
+export { default as Loading } from "components/common/Loading";

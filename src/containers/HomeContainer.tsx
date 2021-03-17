@@ -5,22 +5,22 @@ import { movieActions, televisionActions } from 'store/actions';
 import { Home } from "components";
 import { RootState } from "store/rootReducer";
 
-interface Props {
+interface Props { 
 } 
 
 const HomeContainer: React.FC<Props> = (props) => {
-  const { trendMovies } = useSelector((state: RootState) => state.movies);
+  const { nowPlayingMovies } : any = useSelector<any>((state: RootState) => state.movies);
   const { onAirTelevisions } = useSelector((state: RootState) => state.televisions);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(movieActions.getTrendMoviesRequest());
+    dispatch(movieActions.getNowPlayingMoviesRequest());
     dispatch(televisionActions.getOnAirTelevisionsRequest());
   },[dispatch])
 
   return (
     <Home 
-      trendMovies={trendMovies}
+      nowPlayingMovies={nowPlayingMovies}
       onAirTelevisions={onAirTelevisions}
     />
   );

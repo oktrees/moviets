@@ -20,6 +20,9 @@ const GlobalStyles = createGlobalStyle`
     text-decoration: none;
     color: white;
   }
+  input {
+    all: unset;
+  }
 `
 
 export default GlobalStyles;

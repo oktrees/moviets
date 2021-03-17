@@ -13,7 +13,7 @@ import {
 
 import { CONST, Actions } from './actions';
 
-function* getTrendMoviesSaga(action: any) {
+function* getTrendMoviesSaga() {
   try {
     const { data } = yield call(getTodayMovies);
     yield put(Actions.getTrendMoviesSuccess(data));
@@ -22,7 +22,7 @@ function* getTrendMoviesSaga(action: any) {
   } 
 }
 
-function* getTopRatedMoviesSaga(action: any) {
+function* getTopRatedMoviesSaga() {
   try {
     const { data } = yield call(getTopRatedMovies);
     yield put(Actions.getTopRatedMoviesSuccess(data));
@@ -31,7 +31,7 @@ function* getTopRatedMoviesSaga(action: any) {
   }
 }
 
-function* getNowPlayingMoviesSaga(action: any) {
+function* getNowPlayingMoviesSaga() {
   try {
     const { data } = yield call(getNowPlayingMovies);
     yield put(Actions.getNowPlayingMoviesSuccess(data));

@@ -4,7 +4,7 @@ import { createRequestTypes } from 'lib/redux/constants';
 export const CONST = {
   GET_TREND_MOVIES: createRequestTypes("movie/GET_TREND_MOVIES"),
   GET_TOP_RATED_MOVIES: createRequestTypes("movie/GET_TOP_RATED_MOVIES"),
-  GET_NOW_PLAYING_MOVIES: createRequestTypes("movie/GET_TOP_RATED_MOVIES"),
+  GET_NOW_PLAYING_MOVIES: createRequestTypes("movie/GET_NOW_PLAYING_MOVIES"),
   GET_DETAIL: createRequestTypes("movie/GET_DETAIL"),
   GET_DETAIL_VIDEOS: createRequestTypes("movie/GET_DETAIL_VIDEOS"),
   GET_DETAIL_CREDITS: createRequestTypes("movie/GET_DETAIL_CREDITS"),

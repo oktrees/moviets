@@ -1,4 +1,5 @@
 import React from "react";
+
 import { MainTemplate, Footer } from "components";
 import { HeaderContainer, SearchContainer } from "containers";
 

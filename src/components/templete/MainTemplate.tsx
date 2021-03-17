@@ -5,11 +5,13 @@ interface Props {
   children?: React.ReactNode;
   footer?: React.ReactNode;
   header?: React.ReactNode;
+  slider?: React.ReactNode;
 }
 
-const MainTemplate: React.FC<Props> = ({ children, footer, header }) => (
+const MainTemplate: React.FC<Props> = ({ children, footer, header, slider }) => (
   <Containter className="page-template">
     <Header>{header}</Header>
+    {slider && <Slider>{slider}</Slider>}
     <Section>{children}</Section>
     <Footer>{footer}</Footer>
   </Containter>
@@ -19,7 +21,7 @@ const Containter = styled.div`
   margin: auto;
   width: 100%;
   display: grid;
-  grid-template-rows: 80px auto auto 50px;
+  grid-template-rows: 70px auto auto 50px;
   grid-template-columns: 1fr minmax(auto, 800px) 1fr;
   grid-template-areas:
   "header header header"
@@ -29,7 +31,8 @@ const Containter = styled.div`
 `
 
 const Header = styled.header`
-  width: calc(100% - 100px);
+  width: 100%;
+  height: 100%;
   margin: auto;
   grid-area: header;
 `
@@ -44,9 +47,13 @@ const Section = styled.section`
   height: auto;
   grid-area: section;
   margin: auto;
+  @media screen and (max-width: 480px) {
+    width: 100%;
+  }
 `
 const Footer = styled.footer`
-  width: calc(100% - 100px);
+  width: 100%;
+  height: 100%;
   grid-area: footer;
   margin: auto;
 `
