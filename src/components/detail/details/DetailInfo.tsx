@@ -11,67 +11,71 @@ interface Props {
 const DetailInfo: React.FC<Props> = ({
   detail,
   isMovie
-}) => (
-  <Containter>   
-    <BackImg imgUrl={detail?.data && detail.data.backdrop_path}></BackImg>   
-    <ImgBox>
-      <Image 
-        src={detail.data.poster_path}         
-        alt="posterImg" 
-        width="300" 
-        height="450"
-      />
-    </ImgBox>
-    <Info>
-      <h1>
-        {isMovie ? detail.data.title : detail.data.name}
-      </h1>
-      <div className="originName">
-        {isMovie ? detail.data.original_title : detail.data.original_name}
-      </div>
-      <InfoBox>
-        <ul>          
-          <li>
-            <span>              
-              {isMovie ? "개봉" : "방영"}
-            </span>
-              {isMovie ? detail.data.release_date : 
-                (detail?.data?.next_episode_to_air?.air_date ? 
-                  detail.data.next_episode_to_air.air_date :
-                  detail.data.last_air_date
-                )
-              }
-          </li>
-          <li>
-            <span>
-            {isMovie ? "시간" : "시즌" }
-            </span> 
-            {isMovie ? 
-              detail.data.runtime+"분" : 
-              detail.data.number_of_seasons + " " + 
-              (detail.data?.next_episode_to_air?.episode_number ? 
-                detail.data?.next_episode_to_air?.episode_number + "화" :
-                detail.data?.last_episode_to_air?.episode_number + "화" 
-              )}
-          </li>
-          <li>
-            <span>평점</span> 
-            {detail.data.vote_average}
-          </li>
-          <li>
-            <span>장르</span>
-            {detail.data.genres.map((val: any) => val.name).join(' · ')}
-          </li>
-          <li>
-            <span>국가</span>
-            {detail.data.production_countries[0]?.name}
-          </li>
-        </ul>
-        <div>{detail.data.overview}</div>        
-      </InfoBox>
-    </Info>
-  </Containter>
-)
+}) => {
+  if(!detail?.data) return null;
+  
+  return (
+    <Containter>   
+      <BackImg imgUrl={detail?.data && detail.data.backdrop_path}></BackImg>   
+      <ImgBox>
+        <Image 
+          src={detail.data.poster_path}         
+          alt="posterImg" 
+          width="300" 
+          height="450"
+        />
+      </ImgBox>
+      <Info>
+        <h1>
+          {isMovie ? detail.data.title : detail.data.name}
+        </h1>
+        <div className="originName">
+          {isMovie ? detail.data.original_title : detail.data.original_name}
+        </div>
+        <InfoBox>
+          <ul>          
+            <li>
+              <span>              
+                {isMovie ? "개봉" : "방영"}
+              </span>
+                {isMovie ? detail.data.release_date : 
+                  (detail?.data?.next_episode_to_air?.air_date ? 
+                    detail.data.next_episode_to_air.air_date :
+                    detail.data.last_air_date
+                  )
+                }
+            </li>
+            <li>
+              <span>
+              {isMovie ? "시간" : "시즌" }
+              </span> 
+              {isMovie ? 
+                detail.data.runtime+"분" : 
+                detail.data.number_of_seasons + " " + 
+                (detail.data?.next_episode_to_air?.episode_number ? 
+                  detail.data?.next_episode_to_air?.episode_number + "화" :
+                  detail.data?.last_episode_to_air?.episode_number + "화" 
+                )}
+            </li>
+            <li>
+              <span>평점</span> 
+              {detail.data.vote_average}
+            </li>
+            <li>
+              <span>장르</span>
+              {detail.data.genres.map((val: any) => val.name).join(' · ')}
+            </li>
+            <li>
+              <span>국가</span>
+              {detail.data.production_countries[0]?.name}
+            </li>
+          </ul>
+          <div>{detail.data.overview}</div>        
+        </InfoBox>
+      </Info>
+    </Containter>
+  )
+}
 
 type activeType = {
   imgUrl: string;

@@ -12,18 +12,19 @@ interface Props {
 const Television: React.FC<Props> = ({
   popualarTelevisions,
   topRatedTelevisions
-}) => (
-  <Container>
-    {(popualarTelevisions.loading || topRatedTelevisions.loading) && <Loading />}
+}) => {
+  if(popualarTelevisions.loading || topRatedTelevisions.loading) return <Loading />
 
-    <h2>인기 프로그램</h2>
-    {popualarTelevisions?.data?.results[0] && <List listArr={popualarTelevisions} keyword="tv" />}
+  return (
+    <Container>
+      <h2>인기 프로그램</h2>
+      <List listArr={popualarTelevisions} keyword="tv" />
 
-    <h2>평점높은 프로그램</h2>  
-    {topRatedTelevisions?.data?.results[0] && <List listArr={topRatedTelevisions} keyword="tv" />}
-  </Container>
-)
-
+      <h2>평점높은 프로그램</h2>  
+      <List listArr={topRatedTelevisions} keyword="tv" />
+    </Container>
+  )
+}
 const Container = styled.div`
   width: auto;
   color: white; 

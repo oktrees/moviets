@@ -17,42 +17,47 @@ interface Props {
 const DetailSimilars: React.FC<Props> = ({
   detailSimilars,
   isMovie
-}) => (
-  <Container>   
-    <h2>{detailSimilars?.data?.results[0] && "관련 영화 추천"}</h2>
-    <Swiper
-      navigation
-      spaceBetween={50}
-      breakpoints={{
-        480: {
-          width: 480,
-          slidesPerView: 1,
-          centeredSlides: true,
-        },
-        481: {
-          width: 481,
-          slidesPerView: "auto",
-        },
-      }}
-    >
-      {detailSimilars.data.results.map((result: any, i: number) => (
-        <SwiperSlide key={i}>
-          <Link to={isMovie ? `/movie/${result.id}` : `/tv/${result.id}`}>
-            <Image 
-              src={result.poster_path} 
-              alt="posterImg" 
-              width="200" 
-              height="300"
-            />
-            <div className="titleName">
-              {isMovie ? result.title : result.name}
-            </div>
-          </Link>
-        </SwiperSlide>
-      ))}
-    </Swiper>
-  </Container>
-)
+}) => {
+  if(!detailSimilars?.data?.results) return null;
+
+  return (
+    <Container>   
+      <h2>{detailSimilars?.data?.results[0] && "관련 영화 추천"}</h2>
+      <Swiper
+        navigation
+        spaceBetween={50}
+        breakpoints={{
+          480: {
+            width: 480,
+            slidesPerView: 1,
+            centeredSlides: true,
+          },
+          481: {
+            width: 481,
+            slidesPerView: "auto",
+          },
+        }}
+      >
+        {detailSimilars.data.results.map((result: any, i: number) => (
+          <SwiperSlide key={i}>
+            <Link to={isMovie ? `/movie/${result.id}` : `/tv/${result.id}`}>
+              <Image 
+                src={result.poster_path} 
+                alt="posterImg" 
+                width="200" 
+                height="300"
+              />
+              <div className="titleName">
+                {isMovie ? result.title : result.name}
+              </div>
+            </Link>
+          </SwiperSlide>
+          )
+        )}
+      </Swiper>
+    </Container>
+  )
+}
 
 const Container = styled.div`
   margin-top: 70px;

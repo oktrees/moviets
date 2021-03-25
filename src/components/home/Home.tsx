@@ -13,24 +13,19 @@ interface Props {
 const Home: React.FC<Props> = ({
   nowPlayingMovies,
   onAirTelevisions,
-}) => (  
-  <Container>
-    {(nowPlayingMovies.loading || onAirTelevisions.loading) && <Loading />}
-    <h2>상영중인 영화</h2>
-    {nowPlayingMovies?.data?.results[0] && 
-      <List 
-        listArr={nowPlayingMovies} 
-        keyword="movie"
-    />}
+}) => {
+  if(nowPlayingMovies.loading || onAirTelevisions.loading) return <Loading />
 
-    <h2>방영중인 프로그램</h2>
-    {onAirTelevisions?.data?.results[0] && 
-      <List 
-        listArr={onAirTelevisions} 
-        keyword="tv" 
-    />}
-  </Container>
-)
+  return(  
+    <Container>      
+      <h2>상영중인 영화</h2>
+      <List listArr={nowPlayingMovies} keyword="movie"/>
+
+      <h2>방영중인 프로그램</h2>
+      <List listArr={onAirTelevisions} keyword="tv" />
+    </Container>
+  )
+}
 
 const Container = styled.div`
   width: auto;

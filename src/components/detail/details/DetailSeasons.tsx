@@ -14,39 +14,43 @@ interface Props {
 
 const DetailSeasons: React.FC<Props> = ({
   detail
-}) => (
-  <Container>   
-    <h2>{detail?.data?.seasons[1] && "시즌"}</h2>    
-    <Swiper
-    navigation
-    spaceBetween={50}
-      breakpoints={{
-        480: {
-          width: 480,
-          slidesPerView: 1,
-          centeredSlides: true,
-        },
-        481: {
-          width: 481,
-          slidesPerView: "auto",
-        },
-      }}
-    >
-      {detail?.data?.seasons[1] && detail?.data?.seasons?.map((result: any, i: number) => (
-        <SwiperSlide key={i}>
-          <Image 
-              src={result.poster_path} 
-              alt="profileImg" 
-              width="200" 
-              height="300"              
-            />
-            <div className="seasonName">{result.name}</div>
-            <div className="seasonDate">{result.air_date}</div>
-        </SwiperSlide>
-      ))}
-    </Swiper>
-  </Container>
-)
+}) => {
+  if(!detail?.data?.seasons) return null
+
+  return (
+    <Container>   
+      <h2>{detail?.data?.seasons[1] && "시즌"}</h2>    
+      <Swiper
+      navigation
+      spaceBetween={50}
+        breakpoints={{
+          480: {
+            width: 480,
+            slidesPerView: 1,
+            centeredSlides: true,
+          },
+          481: {
+            width: 481,
+            slidesPerView: "auto",
+          },
+        }}
+      >
+        {detail?.data?.seasons[1] && detail?.data?.seasons?.map((result: any, i: number) => (
+          <SwiperSlide key={i}>
+            <Image 
+                src={result.poster_path} 
+                alt="profileImg" 
+                width="200" 
+                height="300"              
+              />
+              <div className="seasonName">{result.name}</div>
+              <div className="seasonDate">{result.air_date}</div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </Container>
+  )
+}
 
 const Container = styled.div`
   margin-top: 70px;

@@ -12,16 +12,19 @@ interface Props {
 const Movie: React.FC<Props> = ({
   trendMovies,
   topRatedMovies
-}) => ( 
-  <Container>
-    {(trendMovies.loading || topRatedMovies.loading) && <Loading />}
-    <h2>인기영화</h2>
-    {trendMovies?.data?.results[0] && <List listArr={trendMovies} keyword="movie" />}
-    
-    <h2>평점높은영화</h2>
-    {topRatedMovies?.data?.results[0] && <List listArr={topRatedMovies} keyword="movie" />}
-  </Container>
-)
+}) => {
+  if(trendMovies.loading || topRatedMovies.loading) return <Loading />
+
+  return ( 
+    <Container>
+      <h2>인기영화</h2>
+      <List listArr={trendMovies} keyword="movie" />
+      
+      <h2>평점높은영화</h2>
+      <List listArr={topRatedMovies} keyword="movie" />
+    </Container>
+  )
+}
 
 const Container = styled.div`
   width: auto;

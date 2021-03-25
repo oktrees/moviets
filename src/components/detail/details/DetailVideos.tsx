@@ -14,36 +14,40 @@ interface Props {
 const DetailVideos: React.FC<Props> = ({
   detailVideos,
   isMovie
-}) => (
-  <Container>   
-    <h2>{detailVideos?.data?.results[0] && "관련영상"}</h2>
-    <Swiper
-    navigation
-    spaceBetween={50}
-    breakpoints={{
-      480: {
-        width: 480,
-        slidesPerView: 1,
-        centeredSlides: true,
-      },
-      481: {
-        width: 481,
-        slidesPerView: "auto",
-      },
-    }}
-    >
-      {detailVideos.data.results.map((result: any, i: number) => (
-        <SwiperSlide key={i}>
-          <a href={`https://www.youtube.com/watch?v=${result.key}`} target="_blank" rel="noopener noreferrer" >
-            <img src={`https://img.youtube.com/vi/${result.key}/0.jpg`} alt="contentsImg" width="100%" />        
-          </a>
-          <VideoName>{result.name}</VideoName>
-        </SwiperSlide>
-      ))}
-    </Swiper>
-    
-  </Container>
-)
+}) => {
+  if(!detailVideos?.data?.results) return null ;
+  
+  return (
+    <Container>   
+      <h2>{detailVideos?.data?.results[0] && "관련영상"}</h2>
+      <Swiper
+      navigation
+      spaceBetween={50}
+      breakpoints={{
+        480: {
+          width: 480,
+          slidesPerView: 1,
+          centeredSlides: true,
+        },
+        481: {
+          width: 481,
+          slidesPerView: "auto",
+        },
+      }}
+      >
+        {detailVideos.data.results.map((result: any, i: number) => (
+          <SwiperSlide key={i}>
+            <a href={`https://www.youtube.com/watch?v=${result.key}`} target="_blank" rel="noopener noreferrer" >
+              <img src={`https://img.youtube.com/vi/${result.key}/0.jpg`} alt="contentsImg" width="100%" />        
+            </a>
+            <VideoName>{result.name}</VideoName>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+      
+    </Container>
+  )
+}
 
 const Container = styled.div`
   margin-top: 70px;

@@ -22,6 +22,8 @@ const List: React.FC<Props> = ({ listArr, keyword }) => {
     e.target.closest('.hoverBox').style.opacity = 0     
   }
   
+  if(!listArr?.data?.results[0]) return null;
+
   return (
     <Container>
       <Swiper

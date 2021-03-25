@@ -11,27 +11,31 @@ interface Props {
   detailSimilars: any;
   isMovie: boolean; 
 }
-
+ 
 const Detail: React.FC<Props> = ({
   detail,
   detailVideos,
   detailCredits,
   detailSimilars,
   isMovie,
-}) => (
-  <Containter>   
-    {(detail.loading || detailVideos.loading || detailCredits.loading || detailSimilars.loading) ? 
-      <Loading /> : 
-      <>
-        {detail?.data && <DetailInfo detail={detail} isMovie={isMovie}/> } 
-        {detailVideos?.data?.results && <DetailVideos detailVideos={detailVideos} isMovie={isMovie} /> } 
-        {detail?.data?.seasons && <DetailSeasons detail={detail} /> } 
-        {detailCredits?.data &&<DetailCredits detailCredits={detailCredits} /> }
-        {detailSimilars?.data?.results &&<DetailSimilars detailSimilars={detailSimilars} isMovie={isMovie}/> }
-      </>
-    }
-  </Containter>
-)
+}) => {
+  if (detail.loading 
+    || detailVideos.loading 
+    || detailCredits.loading 
+    || detailSimilars.loading
+  ) return <Loading /> 
+
+  return (
+    <Containter>  
+      <DetailInfo detail={detail} isMovie={isMovie}/>
+      <DetailVideos detailVideos={detailVideos} isMovie={isMovie} /> 
+      <DetailSeasons detail={detail} /> 
+      <DetailCredits detailCredits={detailCredits} />
+      <DetailSimilars detailSimilars={detailSimilars} isMovie={isMovie}/>
+    </Containter>
+  )
+}
+
 const Containter = styled.div`
   color: white;
   width: 100%;
